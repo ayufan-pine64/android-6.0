@@ -5,7 +5,7 @@ properties([
     text(defaultValue: '', description: 'A list of changes', name: 'CHANGES'),
     booleanParam(defaultValue: false, description: 'If build should be marked as pre-release', name: 'PRERELEASE'),
     string(defaultValue: 'ayufan-pine64', description: 'GitHub username or organization', name: 'GITHUB_USER'),
-    string(defaultValue: 'android-7.1', description: 'GitHub repository', name: 'GITHUB_REPO'),
+    string(defaultValue: 'android-6.0', description: 'GitHub repository', name: 'GITHUB_REPO'),
   ])
 ])
 */
@@ -39,9 +39,9 @@ node('digitalocean && ubuntu-16.04 && 16gb && android-7.0') {
 
         set -xe
 
-        ~/bin/repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.0_r7 --depth=1
+        ~/bin/repo init -u https://android.googlesource.com/platform/manifest -b android-6.0.1_r74 --depth=1
         rm -rf .repo/local_manifests
-        git clone https://github.com/ayufan-pine64/local_manifests -b nougat-7.1 .repo/local_manifests
+        git clone https://github.com/ayufan-pine64/local_manifests -b marshmallow .repo/local_manifests
 
         ~/bin/repo sync -j 20 -c --force-sync
         '''
