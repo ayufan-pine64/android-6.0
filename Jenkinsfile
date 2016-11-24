@@ -75,7 +75,8 @@ node('digitalocean && ubuntu-16.04 && 16gb && android-7.0') {
           'TARGET=tulip_chiphd-userdebug',
           'USE_CCACHE=true',
           'CCACHE_DIR=/ccache',
-          'ANDROID_JACK_VM_ARGS=-Xmx4g -Dfile.encoding=UTF-8 -XX:+TieredCompilation'
+          'ANDROID_JACK_VM_ARGS=-Xmx4g -Dfile.encoding=UTF-8 -XX:+TieredCompilation',
+          'EXPERIMENTAL_USE_JAVA8=yes'
         ]) {
           stage 'Regular'
           retry(2) {
