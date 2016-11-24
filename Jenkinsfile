@@ -13,7 +13,7 @@ properties([
 node('digitalocean && ubuntu-16.04 && 16gb && android-7.0') {
   stage 'System'
   sh '''#!/bin/bash
-  sudo apt-get add-apt-repository -y ppa:openjdk-r/ppa
+  sudo add-apt-repository -y ppa:openjdk-r/ppa
   sudo apt-get update -y
   sudo apt-get install -y openjdk-7-jdk python git-core gnupg flex bison gperf build-essential \
     zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 \
