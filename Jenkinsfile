@@ -79,11 +79,11 @@ node('digitalocean && ubuntu-16.04 && 16gb && android-7.0') {
           'ANDROID_JACK_VM_ARGS=-Xmx4g -Dfile.encoding=UTF-8 -XX:+TieredCompilation'
         ]) {
           stage 'Regular'
-          retry(2) {
+          retry(4) {
             sh '''#!/bin/bash
               source build/envsetup.sh
               lunch "${TARGET}"
-              make -j
+              make -j6
             '''
           }
 
