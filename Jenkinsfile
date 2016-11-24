@@ -39,8 +39,8 @@ node('digitalocean && ubuntu-16.04 && 16gb && android-7.0') {
 
         set -xe
 
-        ~/bin/repo init -u https://android.googlesource.com/platform/manifest -b android-6.0.1_r74 --depth=1
         rm -rf .repo/local_manifests
+        ~/bin/repo init -u https://android.googlesource.com/platform/manifest -b android-6.0.1_r74 --depth=1
         git clone https://github.com/ayufan-pine64/local_manifests -b marshmallow .repo/local_manifests
 
         ~/bin/repo sync -j 20 -c --force-sync
