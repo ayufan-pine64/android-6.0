@@ -1,4 +1,4 @@
-dadsa/**
+/**
 properties([
   parameters([
     string(defaultValue: '1.0', description: 'Current version number', name: 'VERSION'),
