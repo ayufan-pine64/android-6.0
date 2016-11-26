@@ -83,7 +83,7 @@ node('digitalocean && ubuntu-16.04 && 16gb && clean') {
             sh '''#!/bin/bash
               source build/envsetup.sh
               lunch "${TARGET}"
-              make -j6
+              make -j
             '''
           }
 
