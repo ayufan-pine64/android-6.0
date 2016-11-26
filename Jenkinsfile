@@ -1,4 +1,4 @@
-/**
+dadsa/**
 properties([
   parameters([
     string(defaultValue: '1.0', description: 'Current version number', name: 'VERSION'),
@@ -83,7 +83,7 @@ node('digitalocean && ubuntu-16.04 && 16gb && clean') {
             sh '''#!/bin/bash
               source build/envsetup.sh
               lunch "${TARGET}"
-              make -j
+              make -j$(($(nproc)+1))
             '''
           }
 
