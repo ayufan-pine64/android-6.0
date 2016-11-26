@@ -10,7 +10,7 @@ properties([
 ])
 */
 
-node('digitalocean && ubuntu-16.04 && 16gb && android-7.0') {
+node('digitalocean && ubuntu-16.04 && 16gb && clean') {
   stage 'System'
   sh '''#!/bin/bash
   sudo add-apt-repository -y ppa:openjdk-r/ppa
