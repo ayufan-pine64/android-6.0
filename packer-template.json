@@ -1,0 +1,20 @@
+{
+  "variables": {
+    "do_api_token": "{{env `DIGITALOCEAN_API_TOKEN`}}"
+  },
+
+  "builders": [{
+    "type": "digitalocean",
+    "api_token": "{{user `do_api_token`}}",
+    "size": "8gb",
+    "region": "ams2",
+    "image": "ubuntu-16-04-x64",
+    "droplet_name": "android-6.0-pine64-packer",
+    "snapshot_name": "android-6.0-pine64-squashfs-{{timestamp}}"
+  }],
+
+  "provisioners": [{
+    "type": "shell",
+    "script": "install-script.sh"
+  }]
+}
