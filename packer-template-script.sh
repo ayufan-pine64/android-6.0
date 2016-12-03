@@ -76,3 +76,7 @@ message "Updating squashfs..."
 cd /
 umount /android /mnt/android
 mksquashfs /android/overlay /android.squashfs -Xcompression-level 7
+
+message "Cleanup new files..."
+rm -rf /android
+mkdir -p /android/{overlay,work}/
