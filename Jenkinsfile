@@ -34,6 +34,7 @@ node('digitalocean && ubuntu-16.04 && 8gb && android-6.0') {
       wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
         stage 'Prepare'
         sh 'rm -f *.gz'
+        sh "find out/target/product/tulip-chiphd -name 'libatv_uinputbridge.so' -delete"
 
         stage 'Sources'
         sh '''#!/bin/bash
