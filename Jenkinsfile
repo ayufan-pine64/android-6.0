@@ -118,7 +118,7 @@ node('digitalocean && ubuntu-16.04 && 8gb && android-6.0') {
             source build/envsetup.sh
             lunch "${TARGET}"
             set -xe
-            sdcard_image "${JOB_NAME}-pinebook-v${VERSION}-r${BUILD_NUMBER}.img.gz pinebook"
+            sdcard_image "${JOB_NAME}-pinebook-v${VERSION}-r${BUILD_NUMBER}.img.gz" pinebook
           '''
         }
 
