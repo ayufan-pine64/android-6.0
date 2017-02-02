@@ -71,7 +71,7 @@ node('digitalocean && ubuntu-16.04 && 8gb && android-6.0') {
               "https://api.github.com/repos/$GITHUB_USER/$GITHUB_REPO/contents/versions/$VERSION/manifest.xml"
           '''
         }
-
+        
         withEnv([
           "VERSION=$VERSION",
           'TARGET=tulip_chiphd_atv-userdebug',
@@ -94,6 +94,31 @@ node('digitalocean && ubuntu-16.04 && 8gb && android-6.0') {
             lunch "${TARGET}"
             set -xe
             sdcard_image "${JOB_NAME}-tv-v${VERSION}-r${BUILD_NUMBER}.img.gz"
+          '''
+        }
+
+        withEnv([
+          "VERSION=$VERSION",
+          'TARGET=tulip_chiphd_pinebook-userdebug',
+          'USE_CCACHE=true',
+          'CCACHE_DIR=/ccache',
+          'ANDROID_JACK_VM_ARGS=-Xmx4g -Dfile.encoding=UTF-8 -XX:+TieredCompilation'
+        ]) {
+          stage 'Pinebook'
+          retry(2) {
+            sh '''#!/bin/bash
+              source build/envsetup.sh
+              lunch "${TARGET}"
+              make -j$(($(nproc)+1))
+            '''
+          }
+
+          stage 'Image Pinebook'
+          sh '''#!/bin/bash
+            source build/envsetup.sh
+            lunch "${TARGET}"
+            set -xe
+            sdcard_image "${JOB_NAME}-pinebook-v${VERSION}-r${BUILD_NUMBER}.img.gz pinebook"
           '''
         }
 
